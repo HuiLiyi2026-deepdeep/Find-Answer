@@ -1,5 +1,7 @@
 # FindAnswer
 
+[![CI](https://github.com/HuiLiyi2026-deepdeep/Find-Answer/actions/workflows/ci.yml/badge.svg)](https://github.com/HuiLiyi2026-deepdeep/Find-Answer/actions/workflows/ci.yml)
+
 > 从资料里，找到确切答案。
 
 一个本地优先的严格 RAG 资料问答工具：答案只来自你上传的资料，每条结论都能回到原文；资料不足时直接拒答，不用模型常识补答。
@@ -105,7 +107,15 @@ node --test public-harness/tests/*.test.mjs
 
 # 启动器脚本测试
 powershell -ExecutionPolicy Bypass -File scripts/tests/StartFindAnswer.Tests.ps1
+
+# 评测：离线契约检查（无需 Key，CI 会跑）
+python eval/run_eval.py --mode offline
+
+# 评测：真实质量基线（需要本地 Key）
+python eval/run_eval.py --mode live --report eval/report-live.json
 ```
+
+评测集结构与指标门槛见 [eval/README.md](eval/README.md)。CI 在 push 与 PR 时运行后端测试、离线评测、前端测试与构建、公开版 Harness。
 
 ## 打包 Windows 版本
 
@@ -123,6 +133,7 @@ frontend/           React + Vite 工作台（本地与公开两种模式）
 functions/          Qoder Sites Function（公开版服务端）
 deploy/schema.sql   公开版数据库结构
 public-harness/     公开版 Function 的本地测试与服务模拟
+eval/               检索与拒答评测集、离线契约与真实基线
 packaging/          PyInstaller 配置、构建脚本与使用说明
 scripts/            启动脚本与启动器测试
 docs/               设计文档与实施计划

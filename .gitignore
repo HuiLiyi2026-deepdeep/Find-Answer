@@ -12,6 +12,7 @@ packaging/.venv-build/
 packaging/work/
 packaging/out/
 submission/
+eval/report-*.json
 .FindAnswer.qoder.site
 FindAnswer.lnk
 *.pyc

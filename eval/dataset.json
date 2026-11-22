@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "description": "合成资料上的检索与拒答评测集。文档与问题均为虚构内容，不含真实业务资料。",
+  "documents": [
+    {
+      "id": "onboarding",
+      "name": "onboarding-guide.md",
+      "text": "# 新员工入职指引\n\n## 报到与试用期\n新员工报到当天需携带身份证原件与学历证明，到人力资源部办理入职手续。所有新员工的试用期为 3 个月，试用期内由所在部门指派一名导师负责日常带教。\n\n## 转正流程\n试用期结束前两周，员工提交转正申请，直属主管在 5 个工作日内完成评估，评估结果分为通过、延长试用期和不予转正三种。延长试用期最长不超过 3 个月，且只能申请一次。\n\n## 账号与设备\n入职当天由信息技术部开通办公账号、邮箱与代码仓库权限。开发岗位默认配发笔记本电脑一台，其他岗位按需申请。设备领用后需在资产系统中登记，离职时归还。\n\n## 培训\n新员工需在入职后 30 天内完成信息安全与合规培训，未完成培训者不能申请生产环境权限。"
+    },
+    {
+      "id": "leave",
+      "name": "leave-policy.md",
+      "text": "# 休假与考勤制度\n\n## 年假\n正式员工每年享有 10 天带薪年假，按入职月份折算。年假以半天为单位申请，需提前 2 个工作日在系统中提交，由直属主管审批。上一年度未使用的年假最多结转 5 天至次年 3 月 31 日，逾期作废。\n\n## 病假\n病假需提供二级以上医院出具的病假证明。连续病假超过 3 天的，需同步提交诊断证明复印件。病假期间工资按当地最低工资标准的 80% 发放。\n\n## 事假\n事假为无薪假，每次申请不超过 3 天，全年累计不超过 15 天。事假需提前 1 个工作日申请，紧急情况可事后补交说明。\n\n## 调休\n因项目上线或紧急故障在休息日加班的，可在 30 天内申请调休。调休需提供加班审批记录，逾期未调休的加班时长不再保留。\n\n## 考勤\n工作时间为上午 9:00 至下午 6:00，午休 1 小时。每月迟到累计超过 3 次的，按公司考勤管理办法处理。"
+    },
+    {
+      "id": "expense",
+      "name": "travel-expense.md",
+      "text": "# 差旅与费用报销规定\n\n## 交通\n出差优先选择高铁二等座，单程超过 6 小时的可申请一等座。市内交通凭发票实报实销，单日上限 100 元。原则上不报销飞机票，确因路程遥远需要乘机的，须提前获得部门负责人书面批准。\n\n## 住宿\n一线城市住宿标准为每晚 400 元，其他城市为每晚 300 元，超出部分自理。住宿发票需与出差审批单的日期一致。\n\n## 餐饮\n出差期间每人每天餐补 80 元，按实际出差天数计算，无需提供餐饮发票。\n\n## 报销流程\n员工在出差结束后 10 个工作日内提交报销单，附上审批单、发票和行程单。财务部在收到完整材料后的 5 个工作日内完成审核并打款。材料不全的报销单将被退回，重新提交后重新计算审核时间。"
+    }
+  ],
+  "cases": [
+    {
+      "id": "onboarding-probation",
+      "kind": "answerable",
+      "question": "新员工的试用期是多久？",
+      "expected_documents": ["onboarding"],
+      "expected_terms": ["3个月"]
+    },
+    {
+      "id": "onboarding-mentor",
+      "kind": "answerable",
+      "question": "试用期内由谁负责带教？",
+      "expected_documents": ["onboarding"],
+      "expected_terms": ["导师"]
+    },
+    {
+      "id": "leave-annual",
+      "kind": "answerable",
+      "question": "正式员工每年有多少天年假？",
+      "expected_documents": ["leave"],
+      "expected_terms": ["10天"]
+    },
+    {
+      "id": "leave-carryover",
+      "kind": "answerable",
+      "question": "上一年度没休完的年假最多可以结转几天？",
+      "expected_documents": ["leave"],
+      "expected_terms": ["5天"]
+    },
+    {
+      "id": "expense-hotel",
+      "kind": "answerable",
+      "question": "一线城市出差住宿每晚的报销上限是多少？",
+      "expected_documents": ["expense"],
+      "expected_terms": ["400"]
+    },
+    {
+      "id": "expense-review-cycle",
+      "kind": "answerable",
+      "question": "财务部审核报销单需要几个工作日？",
+      "expected_documents": ["expense"],
+      "expected_terms": ["5个工作日"]
+    },
+    {
+      "id": "refuse-stock-code",
+      "kind": "unanswerable",
+      "question": "公司的股票代码是多少？",
+      "expected_documents": []
+    },
+    {
+      "id": "refuse-patent",
+      "kind": "unanswerable",
+      "question": "如何申请发明专利？",
+      "expected_documents": []
+    },
+    {
+      "id": "refuse-canteen",
+      "kind": "unanswerable",
+      "question": "食堂几点开饭？",
+      "expected_documents": []
+    },
+    {
+      "id": "refuse-pets",
+      "kind": "unanswerable",
+      "question": "员工可以带宠物上班吗？",
+      "expected_documents": []
+    }
+  ]
+}

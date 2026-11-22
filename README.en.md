@@ -1,5 +1,7 @@
 # FindAnswer
 
+[![CI](https://github.com/HuiLiyi2026-deepdeep/Find-Answer/actions/workflows/ci.yml/badge.svg)](https://github.com/HuiLiyi2026-deepdeep/Find-Answer/actions/workflows/ci.yml)
+
 > Find the answer that is actually in your documents.
 
 A local-first, citation-strict RAG workbench. Answers come only from the materials you provide, every conclusion links back to the source text, and the app refuses to answer when the evidence is insufficient instead of falling back to model knowledge.
@@ -105,7 +107,15 @@ node --test public-harness/tests/*.test.mjs
 
 # Launcher script tests
 powershell -ExecutionPolicy Bypass -File scripts/tests/StartFindAnswer.Tests.ps1
+
+# Evaluation: offline contract check (no keys, runs in CI)
+python eval/run_eval.py --mode offline
+
+# Evaluation: real quality baseline (requires local keys)
+python eval/run_eval.py --mode live --report eval/report-live.json
 ```
+
+Dataset schema and metric thresholds are documented in [eval/README.md](eval/README.md). CI runs backend tests, the offline evaluation, frontend tests and build, and the public harness on every push and pull request.
 
 ## Build the Windows package
 
@@ -123,6 +133,7 @@ frontend/           React + Vite workbench (local and public modes)
 functions/          Qoder Sites Function (public backend)
 deploy/schema.sql   Public database schema
 public-harness/     Local harness and tests for the public Function
+eval/               Retrieval/refusal dataset, offline contract and live baseline
 packaging/          PyInstaller spec, build script, and user notes
 scripts/            Launchers and launcher tests
 docs/               Design documents and implementation plans
