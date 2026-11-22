@@ -4,7 +4,12 @@ class WindowsCredentialStore:
     def get(self, provider: str) -> str | None:
         import keyring
 
-        return keyring.get_password(self.service_name, provider)
+        try:
+            return keyring.get_password(self.service_name, provider)
+        except keyring.errors.KeyringError:
+            # Headless hosts (CI, Linux) have no credential backend; a missing
+            # backend cannot hold a stored key, so treat it as unconfigured.
+            return None
 
     def set(self, provider: str, api_key: str) -> None:
         import keyring
